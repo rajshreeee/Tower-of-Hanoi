@@ -1,0 +1,186 @@
+package org.test;
+
+
+
+import org.engine.GameLoop;
+import org.graphics.Animation;
+import org.graphics.Graphics;
+import org.input.KeyInput;
+import org.resource.ImageResource;
+import org.world.GameObject;
+
+import com.jogamp.newt.event.KeyEvent;
+
+public class TestPlayer extends GameObject {
+public TestPlayer(){
+	
+	animations = new Animation[1];
+	animations[0] = new Animation();
+	animations[0].frames = new ImageResource[2];
+	animations[0].frames[0] = new ImageResource("/res/final.png");
+
+	animations[0].frames[1] = new ImageResource("/res/final2.png");
+}
+	public void update(){
+
+		float xInput = 0;
+		float yInput = 0;
+		boolean bullet = false;
+		if(KeyInput.getKey(KeyEvent.VK_LEFT)){
+			xInput=xInput-30;
+			
+		}
+		if(KeyInput.getKey(KeyEvent.VK_RIGHT)){
+			xInput=xInput+30;
+		}
+		if(KeyInput.getKey(KeyEvent.VK_UP)){
+			yInput=yInput+30;
+		}
+		if(KeyInput.getKey(KeyEvent.VK_DOWN)){
+			yInput=yInput-30;
+		}
+		
+		x+=xInput*GameLoop.updateDelta();
+		y+=yInput*GameLoop.updateDelta();
+		
+				
+			float xInput1 = 0;
+				float yInput1 = 0;
+				
+				if(KeyInput.getKey(KeyEvent.VK_A)){
+					xInput1-=30;
+				}
+				if(KeyInput.getKey(KeyEvent.VK_D)){
+					xInput1+=30;
+				}
+				
+				if(KeyInput.getKey(KeyEvent.VK_W)){
+					yInput1+=30;
+				}
+				if(KeyInput.getKey(KeyEvent.VK_S)){
+					yInput1-=30;
+				}
+			
+				p+=xInput1 * GameLoop.updateDelta();
+				q+=yInput1 * GameLoop.updateDelta();
+				
+				float xInput2 = 0;
+				float yInput2 = 0;
+				
+				if(KeyInput.getKey(KeyEvent.VK_J)){
+					xInput2-=30;
+				}	if(KeyInput.getKey(KeyEvent.VK_L)){
+					xInput2+=30;
+				}
+				
+				if(KeyInput.getKey(KeyEvent.VK_I)){
+					yInput2+=30;
+				}
+				if(KeyInput.getKey(KeyEvent.VK_K)){
+					yInput2-=30;
+				}
+				
+				
+				
+				
+				
+				a+=xInput2 * GameLoop.updateDelta();
+				b+=yInput2 * GameLoop.updateDelta();
+		//for small ring
+		if(x<100 && y<=40){
+			x=x+1;
+			
+			y=y+1;
+		}else{
+			
+				gonow();
+		}
+		
+		
+		}
+		private void gonow() {
+			// TODO Auto-generated method stub
+			if(y>=-150 && x<=250){
+				y=y-1;
+				x=x+1;
+				
+				
+			}else{
+				nowmid1();
+			}}
+		private void nowmid1() {
+			// TODO Auto-generated method stub
+			if(a<170 && b<=100){
+				a=a+1;
+				b=b+1;
+			}else{
+				nowmid2();
+			}
+				
+		}
+		private void nowmid2() {
+			// TODO Auto-generated method stub
+			if(b>=-100 && a<=250){
+				b=b-1;
+				a=a+1;}
+			else{
+				nowbig1();
+			}
+		}
+		private void nowbig1() {
+			// TODO Auto-generated method stub
+			if(p<320 && q<=180){
+				p=p+1;
+				q=q+1;
+			}else {
+				nowbig2();
+			}
+		}
+		private void nowbig2() {
+			// TODO Auto-generated method stub
+			if(q>=-440 && p<=510){
+				q=q-1;
+				p=p+1;}else{
+					nowmid3();
+				}
+		}
+		private void nowmid3() {
+			// TODO Auto-generated method stub
+			if(a<370 && b<=200){
+				a=a+1;
+				b=b+1;
+			}else{
+				nowmid4();
+			}
+		}
+		private void nowmid4() {
+			// TODO Auto-generated method stub
+			if(a<500 && b>=-340){
+				a=a+1;
+				b=b-1;
+			}else {
+				nowlast();
+			}
+		}
+		private void nowlast() {
+			// TODO Auto-generated method stub
+			if(x<370 && y<=200){
+				x=x+1;
+				y=y+1;
+			} else{
+				nowlast2();
+			}
+		}
+		private void nowlast2() {
+			// TODO Auto-generated method stub
+			if(x<500){
+				x=x+1;
+			}
+			}
+	
+	}
+	
+
+
+	
+
