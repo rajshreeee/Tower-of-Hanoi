@@ -1,0 +1,29 @@
+package org.input;
+
+import com.jogamp.newt.event.KeyEvent;
+import com.jogamp.newt.event.KeyListener;
+
+public class KeyInput implements KeyListener {
+
+	public static boolean [] keys = new boolean [256];
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		keys[e.getKeyCode()] = true;
+		
+	}
+
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		keys[e.getKeyCode()] = false;
+		
+	}
+
+	/**
+	 * @param args
+	 */
+	public static boolean getKey(int keyCode){
+		
+		return keys[keyCode];
+	}
+
+}
